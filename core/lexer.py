@@ -3,7 +3,7 @@ from sly import Lexer
 class MyLexer(Lexer):
     tokens = { NAME, NUMBER }
     ignore = ' \t'
-    literals = { '=', '+', '-', '*', '/', '(', ')'  }
+    literals = { '=', '+', '*'  }
     NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
 
     @_(r'\d+')

@@ -1,5 +1,9 @@
+# from core.lexer import MyLexer
+# from core.parser import MyParser
+
 from core.lexer import MyLexer
 from core.parser import MyParser
+
 
 if __name__ == '__main__':
     lexer = MyLexer()

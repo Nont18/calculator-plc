@@ -5,8 +5,9 @@ class MyParser(Parser):
     tokens = MyLexer.tokens
 
     precedence = (
-        ('left', '+', '-'),
-        ('left', '*', '/'),
+        ('left', '*'),
+        ('left', '+'),
+        # ('left', '*'),
         ('right', 'UMINUS'),
         )
 
@@ -25,25 +26,25 @@ class MyParser(Parser):
     def expr(self, p):
         return p.expr0 + p.expr1
 
-    @_('expr "-" expr')
-    def expr(self, p):
-        return p.expr0 - p.expr1
+    # @_('expr "-" expr')
+    # def expr(self, p):
+    #     return p.expr0 - p.expr1
 
     @_('expr "*" expr')
     def expr(self, p):
         return p.expr0 * p.expr1
 
-    @_('expr "/" expr')
-    def expr(self, p):
-        return p.expr0 / p.expr1
+    # @_('expr "/" expr')
+    # def expr(self, p):
+    #     return p.expr0 / p.expr1
 
     @_('"-" expr %prec UMINUS')
     def expr(self, p):
         return -p.expr
 
-    @_('"(" expr ")"')
-    def expr(self, p):
-        return p.expr
+    # @_('"(" expr ")"')
+    # def expr(self, p):
+    #     return p.expr
 
     @_('NUMBER')
     def expr(self, p):
